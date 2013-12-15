@@ -2,9 +2,9 @@
 " Maintainer: Deon Poncini
 " Version:    0.1
 
-"if exists('g:loaded_include_fixer')
-"  finish
-"endif
+if exists('g:loaded_include_fixer')
+  finish
+endif
 let g:loaded_include_fixer = 1
 
 let s:cstd = ["assert",
