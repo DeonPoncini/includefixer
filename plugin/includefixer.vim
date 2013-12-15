@@ -2,9 +2,9 @@
 " Maintainer: Deon Poncini
 " Version:    0.1
 
-if exists('g:loaded_include_fixer')
-  finish
-endif
+"if exists('g:loaded_include_fixer')
+"  finish
+"endif
 let g:loaded_include_fixer = 1
 
 let s:cstd = ["assert",
@@ -93,7 +93,7 @@ function! s:ClearEmpty(start,end)
     " delete every empty line between the start and end ranges of includes
     if (line(".") < a:start)
         return
-    elseif(line(".") >= a:end)
+    elseif(line(".") > a:end)
         return
     endif
     execute 'delete _'
