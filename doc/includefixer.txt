@@ -1,0 +1,117 @@
+*includefixer.txt* for Vim version 7.3 or newer  Last change: 2013 December 14
+
+                  Include Fixer for Vim by Deon Poncini~
+
+Include Fixer                                                *includefixer*
+                                                             *includefixer-help*
+
+Include Fixer organizes C and C++ #include header files to be in specific
+categories, as well as organizing alphabetically. Default categories are
+provided, as well as the option to customize categories
+
+0. Install                                        |includefixer-install|
+1. Usage                                          |includefixer-usage|
+2. Categories                                     |includefixer-categories|
+3. Configuration                                  |includefixer-configuration|
+4. License                                        |includefixer-license|
+5. Contributing                                   |includefixer-contributing|
+6. Credits                                        |includefixer-credits|
+
+==============================================================================
+0. Install                                                *includefixer-install*
+
+Note: I recommend using Tim Pope's pathogen plugin to install this plugin. See
+https://github.com/tpope/vim-pathogen. If you've installed pathogen properly
+you can install Include Fixer with the following commands:
+
+	$ cd ~/.vim/bundle
+	$ git clone https://github.com/DeonPoncini/includefixer.git
+
+If you aren't using pathogen, you can use the following steps to install:
+1.  Checkout the git repository above
+2.  Move `includefixer.vim` to your `plugins` directory
+3.  Move this help file into the `doc` directory
+
+==============================================================================
+1. Usage                                                    *includefixer-usage*
+
+Once installed, use the following command to organize include files:
+    `:FixIncludes`
+
+The command will search for lines containing `#include` directives, and organize
+them into different categories and alphabetically within those categories.
+Note: this includes whether the include is written as `"file.h"` or `<file.h>`.
+All includes starting with " will preceed those starting with <
+
+==============================================================================
+2. Categories                                          *includefixer-categories*
+
+The plugin comes with a number of default categories. Each category is
+separated from the others with a blank line. The default categories are
+arranged in the following order:
+        `module`
+        `local`
+        `boost`
+        `qt`
+        `c` `std` `library`
+        `c++` `std` `library`
+
+The module header is any #include that has the same name as the current file,
+not including the extension. For example, for a file called test.cpp, the
+module header would be test.h, test.hpp, test, etc.
+
+Local headers are defined as any headers that do not fall into any other
+category
+
+Boost headers are those associated with the boost project, and match the
+regular expression `[<"]boost/.*[>"]`
+
+Qt headers are those associated with the Qt project, and match the regular
+expression `[<"]Q[A-Zt].*[>"]`
+
+The C and C++ standard library headers are all headers that are defined by the
+C and C++ ISO standards. For a complete list of these, please see
+http://www.cplusplus.com/reference
+
+For the C standard library headers, it matches both C and C++ forms, i.e. it
+matches both `<cmath>` and `<math.h>`
+
+==============================================================================
+3. Configuration                                    *includefixer-configuration*
+
+The above categories can be extended with custom categories defined by the
+user. To define a custom category, define a list of regular expressions that
+match the type of headers you wish to separate. Assign these to the following
+global variable in your .vimrc file `g:include_fixer_custom`
+
+The custom categories will be inserted after the `local` includes and before the
+`boost` includes
+
+An example of how to set this value: If you have a project with two groups of
+headers, ones under MyProject and another set under MyLibrary and you wish to
+have these categorized, set the value like this inside your .vimrc file:
+
+`let` `g:include_fixer_custom` `=`
+                `\` `['[<"]MyLibrary/.*[>"]','[<"]MyProject/.*[>"]']`
+
+Now the Library files will be separated out from the Project files and from
+other local includes.
+
+==============================================================================
+4. License                                                *includefixer-license*
+
+This plugin is distributed under the `Boost` `Software` `License` `v1.0`. A copy of
+this license is included in the `LICENSE` file included with this plugin. A
+copy can also be obtained at the following website:
+http://www.boost.org/LICENSE_1_0.txt
+
+==============================================================================
+5. Contributing                                      *includefixer-contributing*
+
+To contribute patches to this plugin, please submit a pull request at
+https://github.com/DeonPoncini/includefixer
+
+==============================================================================
+5. Credits                                                *includefixer-credits*
+
+Developed by Deon Poncini, email to dex1337@gmail.com

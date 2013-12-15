@@ -1,3 +1,59 @@
+---
+Title: Include Fixer for Vim
+Description: Categorize and Alphabetize C and C++ #include directives
+Author: Deon Poncini
+Created:  2013 Dec 14
+Modified: 2013 Dec 14
+
+---
+
+Include Fixer for Vim
+=============================
+
+Developed by Deon Poncini <dex1337@gmail.com>
+
+Downloads
+---------
+
+[github]: https://github.com/DeonPoncini/includefixer
+
+Installation
+------------
+
+### Option 1: Manual installation
+
+1.  Move `includefixer.vim` to your `.vim/plugin` directory.
+
+        $ cd includefixer/plugin
+        $ mv includfixer.vim ~/.vim/plugin/
+
+### Option 2: Pathogen installation ***(recommended)***
+
+1.  Download and install Tim Pope's [Pathogen].
+
+2.  Next, move or clone the `includefixer` directory so that it is
+    a subdirectory of the `.vim/bundle` directory.
+
+    a. **Clone:**
+
+	$ cd ~/.vim/bundle
+	$ git clone https://github.com/DeonPoncini/includefixer.git
+
+    b. **Move:**
+
+        In the parent directory of includefixer:
+
+            $ mv includefixer ~/.vim/bundle/
+
+Usage
+---------
+:FixIncludes
+
+For more extensive information, please see the documentation inside
+doc/includefixer.txt
+
+License
+---------
 Copyright (c) 2013 Deon Poncini
 
 Permission is hereby granted, free of charge, to any person or organization
